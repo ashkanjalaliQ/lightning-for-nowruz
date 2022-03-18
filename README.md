@@ -4,6 +4,12 @@
 
 ![example](https://user-images.githubusercontent.com/55811147/159043625-2198255a-5a8f-4b5e-8829-f14472663c10.png)
 
+## نصب پیشنیاز ها
+ابتدا وارد فولدر پروژه شوید. سپس کامند زیر را اجرا کنید.
+```terminal
+pip install -r requirements.txt
+```
+
 ## راهنمای شروع
 ### مشخص کردن مقدار `ADMIN_KEY` در فایل `config.py`
 این برنامه، از سرویس lnbits استفاده میکند. پس لازم است وارد وبسایت https://legend.lnbits.com شوید و یک کیف پول بسازید و کیف پول خود را شارژ کنید. در lnbits، در منوی سمت راست، روی گزینه `API info` کلیک کنید. سپس مقدار `Admin Key` را در فایل `config.py` قرار دهید. 
