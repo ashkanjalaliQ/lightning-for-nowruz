@@ -17,7 +17,7 @@ ADMIN_KEY = "a284bb02ab3a4e0eb6f3ffea4182c7g9"
 
 ## طریقه استفاده: 
 ```terminal
-python3 main.py [-h] [-n NAME] [-t THEME]
+python3 main.py [-n NAME] [-t THEME]
 ```
 وقتی این کامند را در ترمینال یا cmd اجرا کنید، فایل عکس، در فولدر پروژه ساخته خواهد شد.
 نام پیشفرض فایل کارت پستال، `postalcard.png` است.
