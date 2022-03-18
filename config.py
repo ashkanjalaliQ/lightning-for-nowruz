@@ -1,7 +1,7 @@
 ## LNBITS SETTINGS
 
 BASE_URL = "https://legend.lnbits.com"
-ADMIN_KEY = "a284bb02ab3a4e0eb6f3ffea4182c7f4"
+ADMIN_KEY = "<YOUR_ADMIN_KEY>"
 LNURL_TITLE = "عیدت مبارک {} جان!"
 IMAGE_TEXT = "برای {} جان! عیدت مبارک"
 REWARD = 10000
