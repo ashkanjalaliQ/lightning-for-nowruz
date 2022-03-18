@@ -45,4 +45,4 @@ python3 main.py -n مریم -t light
 ![postalcard](https://user-images.githubusercontent.com/55811147/159054261-b6aa5553-6bae-4886-a1ba-7c1e3fd09efa.png)
 
 ## منابع
-1. با تشکر از [@yasi30c](https://www.google.com) بابت عکس پس زمینه🙌
+1. با تشکر از [@yasi30c](https://t.me/yasi30c) بابت عکس پس زمینه🙌
