@@ -2,7 +2,7 @@ from config import URL, ADMIN_KEY, BASE_URL, LNURL_TITLE, TEMPLATES, CENTER_IMAG
 from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.moduledrawers import RoundedModuleDrawer
 from exceptions import RequestError
-import requests, qrcode
+import requests, qrcode, os
 import arabic_reshaper
 from bidi.algorithm import get_display
 from PIL import Image, ImageDraw, ImageFont
@@ -49,8 +49,9 @@ class PostalCard(LNurl):
         return template
 
     def add_text_into_template(self, text, template):
-        text = arabic_reshaper.reshape(text)
-        text = get_display(text)
+        if os.name == "nt":
+            text = arabic_reshaper.reshape(text)
+            text = get_display(text)
         
         text_image = Image.new("RGBA", (2000, 2000), (255, 255, 255, 0))
         font = ImageFont.truetype("fonts/Vazirmatn-Bold.ttf", size=100)
