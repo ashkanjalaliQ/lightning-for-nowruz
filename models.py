@@ -54,14 +54,12 @@ class LNurl:
         provider is a string that will be used to identify the provider of the lnurl.
         for example: "lnbits" or "lntxbot"
         """
-        # write switch case here
-        match provider:
-            case "lnbits":
-                return self.get_lnbits_lnurl(reward)
-            case "lntxbot":
-                return self.get_lntxbot_lnurl(reward)
-            case _:
-                raise ValueError("Provider is not valid.")
+        if provider == "lnbits":
+            return self.get_lnbits_lnurl(reward)
+        elif provider == "lntxbot":
+            return self.get_lntxbot_lnurl(reward)
+        else:
+            raise ValueError("Provider is not valid.")
 
 class PostalCard(LNurl):
     def __init__(self, name="", theme="light") -> None:
