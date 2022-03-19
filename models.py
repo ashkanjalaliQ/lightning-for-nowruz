@@ -1,8 +1,8 @@
-from config import URL, ADMIN_KEY, BASE_URL, LNURL_TITLE, TEMPLATES, LOGO, LOGO_SIZE
+from config import URL, LNBITS_ADMIN_KEY, LNBITS_BASE_URL, LNURL_TITLE, TEMPLATES, LOGO, LOGO_SIZE, LNTXBOT_BASE_URL, LNTXBOT_API_KEY
 from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.moduledrawers import RoundedModuleDrawer
 from exceptions import RequestError
-import requests, qrcode, os
+import requests, qrcode, os, json
 import arabic_reshaper
 from bidi.algorithm import get_display
 from PIL import Image, ImageDraw, ImageFont
@@ -10,8 +10,25 @@ from PIL import Image, ImageDraw, ImageFont
 class LNurl:
     def __init__(self, name) -> None:
         self.name = name
-
-    def create_lnurl(self, reward: int) -> str:
+    
+    def get_lntxbot_lnurl(self, reward: int) -> str:
+        """
+        Create a lnurl with the given name and reward.
+        """
+        data = {
+            "satoshis": str(reward),
+        }
+        response = requests.post(
+            LNTXBOT_BASE_URL + URL["create_lnurl"]["lntxbot"],
+            headers={"Authorization": "Basic {}".format(LNTXBOT_API_KEY)},
+            data=json.dumps(data),
+        )
+        try:
+            return response.json()["lnurl"]
+        except:
+            raise RequestError("There is a problem in creating a lnurl.")
+    
+    def get_lnbits_lnurl(self, reward: int) -> str:
         """
         Create a lnurl with the given name and reward.
         """
@@ -23,11 +40,28 @@ class LNurl:
             "wait_time": 1,
             "is_unique": True
         }
-        response = requests.post(BASE_URL + URL["create_lnurl"], json=data, headers={"X-Api-Key": ADMIN_KEY})
+        response = requests.post(LNBITS_BASE_URL + URL["create_lnurl"]["lnbits"], json=data, headers={"X-Api-Key": LNBITS_ADMIN_KEY})
         try:
             return response.json()["lnurl"]
         except:
             raise RequestError("There is a problem in creating a lnurl.")
+
+    def create_lnurl(self, reward: int, provider: str) -> str:
+        """
+        Create a lnurl with the given name and reward.
+        """
+        """
+        provider is a string that will be used to identify the provider of the lnurl.
+        for example: "lnbits" or "lntxbot"
+        """
+        # write switch case here
+        match provider:
+            case "lnbits":
+                return self.get_lnbits_lnurl(reward)
+            case "lntxbot":
+                return self.get_lntxbot_lnurl(reward)
+            case _:
+                raise ValueError("Provider is not valid.")
 
 class PostalCard(LNurl):
     def __init__(self, name="", theme="light") -> None:
