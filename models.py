@@ -1,4 +1,4 @@
-from config import URL, ADMIN_KEY, BASE_URL, LNURL_TITLE, TEMPLATES, LOGO
+from config import URL, ADMIN_KEY, BASE_URL, LNURL_TITLE, TEMPLATES, LOGO, LOGO_SIZE
 from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.moduledrawers import RoundedModuleDrawer
 from exceptions import RequestError
@@ -36,7 +36,7 @@ class PostalCard(LNurl):
         self.theme = theme
         self.qrcode_image = None
     
-    def generate_qrcode(self, lnurl):
+    def generate_qrcode(self, lnurl: str) -> None:
         qr = qrcode.QRCode()
         qr.add_data(lnurl)
         self.qrcode_image = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer())
@@ -48,7 +48,7 @@ class PostalCard(LNurl):
         template.paste(qrcode_image, (510, 310))
         return template
 
-    def add_text_into_template(self, text, template):
+    def add_text_into_template(self, text: str, template):
         if os.name == "nt":
             text = arabic_reshaper.reshape(text)
             text = get_display(text)
@@ -66,12 +66,12 @@ class PostalCard(LNurl):
         template.paste(text_image, (0, 0), text_image)
         return template
         
-    def add_logo_into_template(self):
+    def add_logo_into_qrcode(self) -> None:
         image = Image.open(LOGO)
         self.qrcode_image = self.qrcode_image.convert("RGB")
-        image = image.resize((60, 60))
+        image = image.resize(LOGO_SIZE)
         pos = ((self.qrcode_image.size[0] - image.size[0]) // 2, (self.qrcode_image.size[1] - image.size[1]) // 2)
         self.qrcode_image.paste(image, pos)
 
-    def save_image(self, image_object, file_name):
+    def save_image(self, image_object, file_name: str) -> None:
         image_object.save(f"{file_name}.png")

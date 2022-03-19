@@ -16,3 +16,4 @@ TEMPLATES = {
     "light": "templates/template-light.png"
 }
 LOGO = "templates/lightning_logo.png"
+LOGO_SIZE = (60, 60)
