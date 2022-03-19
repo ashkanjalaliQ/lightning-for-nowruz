@@ -15,7 +15,22 @@ pip install -r requirements.txt
 این برنامه، از سرویس lnbits استفاده میکند. پس لازم است وارد وبسایت https://legend.lnbits.com شوید و یک کیف پول بسازید و کیف پول خود را شارژ کنید. سپس در lnbits، در منوی سمت راست، روی گزینه `API info` کلیک کنید. سپس مقدار `Admin Key` را در فایل `config.py` قرار دهید. 
 برای مثال:
 ```python
-ADMIN_KEY = "a284bb02ab3a4e0eb6f3ffea4182c7g9"
+LNBITS_ADMIN_KEY = "a284bb02ab3a4e0eb6f3ffea4182c7g9"
+```
+### آپدیت جدید! حالا میتوانید از ربات `lntxbot` هم استفاده کنید!
+اگر میخواهید از `lntxbot` استفاده کنید، دیگر لازم نیست اطلاعات lnbits خود را در فایل `config.py`  بنویسید.
+برای اینکار وارد بات شوید. [lntxbot](https://lntxbot.com)
+سپس برای برای بات، این پیغام را ارسال کنید.
+```
+/api_full
+```
+بات برای شما یک رشته ارسال میکند. مثل:
+```
+NDY0ODgxOjBkKLU4Mjg4MDA3YWJiYjNlMjEyOWUwZDRkTGSascmFhNDNGHcxNDRmOWU2ZmE1MDc3MTYzN2JiOThhNjk=
+```
+حالا این مقدار را کپی کنید و داخل فایل `config.py` به صورت زیر جایگذاری کنید:
+```
+LNTXBOT_API_KEY = "NDY0ODgxOjBkKLU4Mjg4MDA3YWJiYjNlMjEyOWUwZDRkTGSascmFhNDNGHcxNDRmOWU2ZmE1MDc3MTYzN2JiOThhNjk="
 ```
 ### مشخص کردن مقدار عیدی
 وارد فایل `config.py` شوید. میتوانید با تغیر مقدار متغیر `REWARD`، مقدار عیدی را مشخص کنید. مثلا میتوانید مقدار متغیر `REWARD`، را برابر `10000` ساتوشی قرار دهید. این بدین معناست که شما برای هر فرد، مقدار `10000` ساتوشی را به عنوان عیدی مشخص کرده اید.
@@ -23,7 +38,7 @@ ADMIN_KEY = "a284bb02ab3a4e0eb6f3ffea4182c7g9"
 
 ## طریقه استفاده: 
 ```terminal
-python3 main.py [-n NAME] [-t THEME]
+python3 main.py [-n NAME] [-t THEME] [-p PROVIDER]
 ```
 > اگر `python3` کار نکرد، از `python` استفاده کنید.
 
@@ -31,12 +46,14 @@ python3 main.py [-n NAME] [-t THEME]
 نام پیشفرض فایل کارت پستال، `postalcard.png` است.
 
 حالا میتوانید این عکس را به هرکسی که دوست دارید بدهید تا عیدی اش را دریافت کنید. میتواند از کیف پولی مثل bluewallet استفاده کند تا عیدی اش را به راحتی دریافت کند.
+#### ارائه دهنده `LNURL`
+ شما میتوانید در کامند خود، ارائه دهنده `LNURL` را انتخاب کنید. مثلا `lnbits` یا `lntxbot`. اگر در اجرای برنامه، مقدار `-p` را خالی بگذارید، به صورت پیشفرض، `lnbits` قرار خواهد گرفت.
 #### تم ها
 در این برنامه، دو تم وجود دارد. یک تم با نام dark و یک تم با نام light. 
 
 ### مثال 1
 ```terminal
-python3 main.py -n اشکان -t dark
+python3 main.py -n اشکان -t dark -p lnbits
 ```
 
 ### نتیجه
@@ -44,7 +61,7 @@ python3 main.py -n اشکان -t dark
 
 ### مثال 2
 ```terminal
-python3 main.py -n مریم -t light
+python3 main.py -n مریم -t light -p lntxbot
 ```
 
 ### نتیجه
