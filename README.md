@@ -18,8 +18,11 @@ pip install -r requirements.txt
 LNBITS_ADMIN_KEY = "a284bb02ab3a4e0eb6f3ffea4182c7g9"
 ```
 ### آپدیت جدید! حالا میتوانید از ربات `lntxbot` هم استفاده کنید!
-اگر میخواهید از `lntxbot` استفاده کنید، دیگر لازم نیست اطلاعات lnbits خود را در فایل `config.py`  بنویسید.
+> اگر میخواهید از `lntxbot` استفاده کنید، دیگر لازم نیست اطلاعات lnbits خود را در فایل `config.py`  بنویسید.
+
 برای اینکار وارد بات شوید. [lntxbot](https://lntxbot.com)
+
+ابتدا حساب خود را در lntxbot شارژ کنید.
 سپس برای برای بات، این پیغام را ارسال کنید.
 ```
 /api_full
