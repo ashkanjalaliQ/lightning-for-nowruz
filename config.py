@@ -15,4 +15,4 @@ TEMPLATES = {
     "dark": "templates/template-dark.png",
     "light": "templates/template-light.png"
 }
-CENTER_IMAGE_ADDRESS = "templates/lightning_logo.png"
+LOGO = "templates/lightning_logo.png"

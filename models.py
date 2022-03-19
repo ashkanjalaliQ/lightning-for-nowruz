@@ -1,4 +1,4 @@
-from config import URL, ADMIN_KEY, BASE_URL, LNURL_TITLE, TEMPLATES, CENTER_IMAGE_ADDRESS
+from config import URL, ADMIN_KEY, BASE_URL, LNURL_TITLE, TEMPLATES, LOGO
 from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.moduledrawers import RoundedModuleDrawer
 from exceptions import RequestError
@@ -66,12 +66,10 @@ class PostalCard(LNurl):
         template.paste(text_image, (0, 0), text_image)
         return template
         
-        
-    
-    def add_image_into_template(self):
-        image = Image.open(CENTER_IMAGE_ADDRESS)
+    def add_logo_into_template(self):
+        image = Image.open(LOGO)
         self.qrcode_image = self.qrcode_image.convert("RGB")
-        image = image.resize((100, 100))
+        image = image.resize((60, 60))
         pos = ((self.qrcode_image.size[0] - image.size[0]) // 2, (self.qrcode_image.size[1] - image.size[1]) // 2)
         self.qrcode_image.paste(image, pos)
 
