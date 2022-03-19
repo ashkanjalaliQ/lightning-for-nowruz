@@ -22,7 +22,7 @@ LNBITS_ADMIN_KEY = "a284bb02ab3a4e0eb6f3ffea4182c7g9"
 
 برای اینکار وارد بات شوید. [lntxbot](https://lntxbot.com)
 
-ابتدا حساب خود را در lntxbot شارژ کنید.
+حساب خود را در lntxbot شارژ کنید.
 سپس برای برای بات، این پیغام را ارسال کنید.
 ```
 /api_full
@@ -32,7 +32,7 @@ LNBITS_ADMIN_KEY = "a284bb02ab3a4e0eb6f3ffea4182c7g9"
 NDY0ODgxOjBkKLU4Mjg4MDA3YWJiYjNlMjEyOWUwZDRkTGSascmFhNDNGHcxNDRmOWU2ZmE1MDc3MTYzN2JiOThhNjk=
 ```
 حالا این مقدار را کپی کنید و داخل فایل `config.py` به صورت زیر جایگذاری کنید:
-```
+```python
 LNTXBOT_API_KEY = "NDY0ODgxOjBkKLU4Mjg4MDA3YWJiYjNlMjEyOWUwZDRkTGSascmFhNDNGHcxNDRmOWU2ZmE1MDc3MTYzN2JiOThhNjk="
 ```
 ### مشخص کردن مقدار عیدی
