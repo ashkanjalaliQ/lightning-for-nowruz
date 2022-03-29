@@ -48,12 +48,18 @@ class LNurl:
 
     def create_lnurl(self, reward: int, provider: str) -> str:
         """
-        Create a lnurl with the given name and reward.
+        Create a lnurl with the given reward and provider.
         """
         """
         provider is a string that will be used to identify the provider of the lnurl.
         for example: "lnbits" or "lntxbot"
         """
+        if reward <= 0:
+            raise ValueError("The reward must be greater than 0.")
+        if provider not in URL["create_lnurl"]:
+            raise ValueError("The provider is not supported.")
+
+
         if provider == "lnbits":
             return self.get_lnbits_lnurl(reward)
         elif provider == "lntxbot":
