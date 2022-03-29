@@ -11,14 +11,14 @@ pip install -r requirements.txt
 ```
 
 ## راهنمای شروع
-### کار با lnbits
+### ساخت کارت پستال با استفاده از lnbits
 #### مشخص کردن مقدار `ADMIN_KEY` در فایل `config.py`
 این برنامه، از سرویس lnbits استفاده میکند. پس لازم است وارد وبسایت https://legend.lnbits.com شوید و یک کیف پول بسازید و کیف پول خود را شارژ کنید. سپس در lnbits، در منوی سمت راست، روی گزینه `API info` کلیک کنید. سپس مقدار `Admin Key` را در فایل `config.py` قرار دهید. 
 برای مثال:
 ```python
 LNBITS_ADMIN_KEY = "a284bb02ab3a4e0eb6f3ffea4182c7g9"
 ```
-### کار با lntxbot
+### ساخت کارت پستال با استفاده از lntxbot
 > اگر میخواهید از `lntxbot` استفاده کنید، دیگر لازم نیست اطلاعات lnbits خود را در فایل `config.py`  بنویسید.
 
 برای اینکار وارد بات شوید. [lntxbot](https://lntxbot.com)
