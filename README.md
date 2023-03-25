@@ -2,7 +2,8 @@
 
 با استفاده از این برنامه، میتوانید با شبکه لایتنینگ به یکدیگر عیدی دهید!
 
-![example](https://user-images.githubusercontent.com/55811147/159043625-2198255a-5a8f-4b5e-8829-f14472663c10.png)
+![example](https://user-images.githubusercontent.com/55811147/227710617-1d089b06-79a4-4f87-80e3-db99aad8f651.png)
+
 
 
 ## نصب پیشنیاز ها
@@ -37,21 +38,15 @@ python3 main.py [-n NAME] [-t THEME]
 #### تم ها
 در این برنامه، دو تم وجود دارد. یک تم با نام dark و یک تم با نام light. 
 
+
 ### مثال 1
 ```terminal
-python3 main.py -n اشکان -t dark
+python3 main.py -n کاوه -t light
 ```
 
 ### نتیجه
-![postalcard](https://user-images.githubusercontent.com/55811147/159044336-9a42629e-7f89-4481-a137-ab5f0a8bf2cc.png)
+![postalcard](https://user-images.githubusercontent.com/55811147/227710786-8b4aeadf-8887-4f1d-81c7-e18acbb99a8a.png)
 
-### مثال 2
-```terminal
-python3 main.py -n مریم -t light
-```
-
-### نتیجه
-![postalcard](https://user-images.githubusercontent.com/55811147/159054261-b6aa5553-6bae-4886-a1ba-7c1e3fd09efa.png)
 
 ## قدردانی
 با تشکر از [@yasi30c](https://t.me/yasi30c) بابت طراحی کارت پستال🙌
