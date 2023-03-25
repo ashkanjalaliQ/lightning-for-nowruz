@@ -1,4 +1,4 @@
-from config import URL, LNBITS_ADMIN_KEY, LNBITS_BASE_URL, LNURL_TITLE, TEMPLATES, LOGO, LOGO_SIZE, LNTXBOT_BASE_URL, LNTXBOT_API_KEY
+from config import URL, LNBITS_ADMIN_KEY, LNBITS_BASE_URL, LNURL_TITLE, TEMPLATES, LOGO, LOGO_SIZE
 from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.moduledrawers import RoundedModuleDrawer
 from exceptions import RequestError
@@ -10,23 +10,6 @@ from PIL import Image, ImageDraw, ImageFont
 class LNurl:
     def __init__(self, name) -> None:
         self.name = name
-    
-    def get_lntxbot_lnurl(self, reward: int) -> str:
-        """
-        Create a lnurl with the given name and reward.
-        """
-        data = {
-            "satoshis": str(reward),
-        }
-        response = requests.post(
-            LNTXBOT_BASE_URL + URL["create_lnurl"]["lntxbot"],
-            headers={"Authorization": "Basic {}".format(LNTXBOT_API_KEY)},
-            data=json.dumps(data),
-        )
-        try:
-            return response.json()["lnurl"]
-        except:
-            raise RequestError("There is a problem in creating a lnurl.")
     
     def get_lnbits_lnurl(self, reward: int) -> str:
         """
@@ -46,7 +29,7 @@ class LNurl:
         except:
             raise RequestError("There is a problem in creating a lnurl.")
 
-    def create_lnurl(self, reward: int, provider: str) -> str:
+    def create_lnurl(self, reward: int) -> str:
         """
         Create a lnurl with the given reward and provider.
         """
@@ -56,16 +39,9 @@ class LNurl:
         """
         if reward <= 0:
             raise ValueError("The reward must be greater than 0.")
-        if provider not in URL["create_lnurl"]:
-            raise ValueError("The provider is not supported.")
 
+        return self.get_lnbits_lnurl(reward)
 
-        if provider == "lnbits":
-            return self.get_lnbits_lnurl(reward)
-        elif provider == "lntxbot":
-            return self.get_lntxbot_lnurl(reward)
-        else:
-            raise ValueError("Provider is not valid.")
 
 class PostalCard(LNurl):
     def __init__(self, name="", theme="light") -> None:
@@ -81,9 +57,9 @@ class PostalCard(LNurl):
     
     def add_qrcode_to_template(self, qrcode_image):
         template = Image.open(TEMPLATES[self.theme])
-        qrcode_image = qrcode_image.resize((1400, 1400))
+        qrcode_image = qrcode_image.resize((1350, 1350))
         qrcode_image = qrcode_image.crop((90, 90, qrcode_image.height-90, qrcode_image.height-90))
-        template.paste(qrcode_image, (510, 310))
+        template.paste(qrcode_image, (535, 360))
         return template
 
     def add_text_into_template(self, text: str, template):

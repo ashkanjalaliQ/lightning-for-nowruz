@@ -3,18 +3,13 @@
 LNBITS_BASE_URL = "https://legend.lnbits.com"
 LNBITS_ADMIN_KEY = "<YOUR_LNBITS_ADMIN_KEY>"
 
-## LNTXBOT SETTINGS
-LNTXBOT_BASE_URL = "https://lntxbot.com"
-LNTXBOT_API_KEY = "<YOUR_LNTXBOT_FULLAPI_KEY>"
-
 LNURL_TITLE = "عیدت مبارک {} جان!"
 IMAGE_TEXT = "برای {} جان! عیدت مبارک"
 REWARD = 10000
 URL = {
     "create_lnurl": 
     {
-        "lnbits": "/withdraw/api/v1/links",
-        "lntxbot": "/generatelnurlwithdraw"
+        "lnbits": "/withdraw/api/v1/links"
     }
 }
 
